@@ -81,6 +81,14 @@ For scrollable chip rows, use one real scroll view for the visible, tappable con
 
 Avoid duplicate lower/upper scroll views. Even with bound scroll positions, layout and gesture timing can drift so text scrolls without the bubble.
 
+## Measured Scroll Layers
+
+For scrollable result rows or chips whose glass is drawn from measured foreground frames:
+- Clip the real scroll view to the same viewport used to mask the measured glass layer.
+- Keep fixed chrome glass, such as a search field or cancel button, above scroll-result glass in `zIndex`.
+- Instantiate a measured glass surface only when its matching foreground item is visible. Opacity alone can still let native Liquid Glass appear as empty pills before text arrives.
+- Clear stale measured frames when the query, source data, or presentation state changes.
+
 ## Fixed-Size Controls
 
 For fixed-size controls, use a direct clear glass surface below visible content:
@@ -101,6 +109,8 @@ ZStack {
 - Put text, icons, and labels in a separate visible layer above glass.
 - Wrap related glass surfaces in `GlassEffectContainer` or the app's local helper, such as `nativeLiquidGlassContainer(spacing:)`.
 - Promote glass to a parent chrome/background layer when labels blur, dim, or drift.
+- Match scroll clipping and measured-glass masks when glass is drawn outside the scroll view.
+- Gate measured glass on the same visibility state as the foreground content, not just `.opacity(0)`.
 - Use `.allowsHitTesting(false)` on decorative glass layers when tappable content lives elsewhere.
 - Mark hidden sizing copies with `.accessibilityHidden(true)`.
 - Keep button/action/accessibility semantics on the visible control.

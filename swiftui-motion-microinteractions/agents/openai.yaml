@@ -1,0 +1,4 @@
+interface:
+  display_name: "SwiftUI Motion Microinteractions"
+  short_description: "SwiftUI motion patterns for polished UI"
+  default_prompt: "Use $swiftui-motion-microinteractions to design a subtle chip reveal animation."
