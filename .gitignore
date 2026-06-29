@@ -1,0 +1,37 @@
+.DS_Store
+Thumbs.db
+
+# Local editor and agent state
+.agents/
+.cursor/
+.claude/
+.codex/
+.impeccable/
+
+# Dependencies and local caches
+node_modules/
+.codex_deps/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+.cache/
+dist/
+build/
+
+# Large raw data can be regenerated or reacquired.
+data/**/raw/*.parquet
+data/**/raw/*.zip
+data/**/raw/*.gz

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SwiftUI Liquid Glass Layering"
+  short_description: "Keep glass below readable labels."
+  default_prompt: "Use $swiftui-liquid-glass-layering to keep SwiftUI Liquid Glass surfaces below visible text and icons."
